@@ -1,0 +1,9 @@
+﻿backend\.venv/
+__pycache__/
+db.sqlite3
+app/node_modules/
+app/android/build/
+app/android/app/build/
+app/android/.gradle/
+*.exe
+

@@ -1,0 +1,18 @@
+# Start the CallGuard backend:  docker compose up --build
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    environment:
+      # Optional: set your own secret (any long random text) before sharing the server beyond your own Wi-Fi.
+      DJANGO_SECRET_KEY: "${DJANGO_SECRET_KEY:-django-insecure-local-testing-only}"
+      DJANGO_DEBUG: "1"
+      DB_PATH: /data/db.sqlite3
+    volumes:
+      # The database lives here, so it survives restarts and rebuilds.
+      - callguard-data:/data
+    restart: unless-stopped
+
+volumes:
+  callguard-data:
